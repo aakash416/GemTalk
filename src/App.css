@@ -8,6 +8,17 @@
   width: 18vw;
   background-color: #121111;
   height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+
+.btn-sidebar {
+  color: #ececec;
+}
+
+.btn-sidebar:hover {
+  background-color: #313030;
 }
 
 .outputfilled {
@@ -27,6 +38,7 @@
   align-items: center;
   height: inherit;
   width: inherit;
+  padding: 0px 50px 0px 50px;
 }
 
 .inputfilled {

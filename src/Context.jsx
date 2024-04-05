@@ -1,26 +1,20 @@
-import { createContext, useState } from "react";
+import { createContext } from "react";
 import { GoogleGenerativeAI } from "@google/generative-ai";
+
+
 
 
 export const Context = createContext();
 
 export const ContextProvider = ({ children }) => {
-    const [inputText, setInputText] = useState('');
-
-
-    const genAI = new GoogleGenerativeAI("Apikey");
+    const genAI = new GoogleGenerativeAI("AIzaSyB7ts87Jw3mK1lKI1ADiNKkDnykvhYyhIY");
     const getAnsweredText = async (question) => {
-        // For text-only input, use the gemini-pro model
         const model = genAI.getGenerativeModel({ model: "gemini-pro" });
-
-        const prompt = question
-
-        const result = await model.generateContent(prompt);
+        const result = await model.generateContent(question);
         const response = await result.response;
-        const text = response.text();
-        return text;
+        return response.text();
     }
 
-    return <Context.Provider value={{ inputText, setInputText, getAnsweredText }}>{children}</Context.Provider>;
+    return <Context.Provider value={{ getAnsweredText }}>{children}</Context.Provider>;
 };
 
